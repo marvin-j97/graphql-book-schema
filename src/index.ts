@@ -1,3 +1,13 @@
-import { add } from "./add";
+import express from "express";
 
-console.log(`Hello world! 2 + 2 = ${add(2, 2)}`);
+import { mountGraphqlServer } from "./graphql";
+
+(async () => {
+  const app = express();
+
+  await mountGraphqlServer(app);
+
+  app.listen(8080, () => {
+    console.log("Express online");
+  });
+})();
